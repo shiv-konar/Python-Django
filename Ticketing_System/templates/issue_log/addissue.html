@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+{% load staticfiles %}
+
+{% block add_issue %}
+<div class="container">
+    <h3>Issue your tickets here.</h3>
+    <form id="add_issue_form" method="post" action="{% url 'addissue' %}">
+        {% csrf_token %}
+        {{ form|crispy }}
+        <input class='btn btn-primary' type='submit' value='Submit' onclick="alert('Your issue has been successfully logged.')" />
+    </form>
+</div>
+
+{% endblock %}

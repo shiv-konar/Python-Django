@@ -1,3 +1,13 @@
 {% extends 'base.html' %}
+{% load render_table from django_tables2 %}
 
-You have logged in
+{% block home_page %}
+
+    {% if user.is_authenticated %}
+        <p>Hello {{ user.username }}</p>
+        {%  render_table issues_list %}
+        <a href="{% url 'addissue' %}">Log an issue?</a>
+    {% else %}
+        <p>Login</p>
+    {% endif %}
+{% endblock %}
